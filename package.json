@@ -1,0 +1,65 @@
+{
+  "name": "LazyDay",
+  "version": "0.0.1",
+  "description": "Helping, day by day.",
+  "main": "main.js",
+  "release": "build",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --mac --publish always"
+  },
+  "author": "ricardoinacio",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^7.1.1",
+    "electron-builder": "^22.4.1",
+    "electron-drag-drop": "^1.1.0",
+    "electron-is-dev": "^1.2.0",
+    "electron-reload": "^1.5.0",
+    "electron-settings": "^3.2.0",
+    "electron-winstaller": "^4.0.0",
+    "fs": "0.0.1-security",
+    "ipc": "0.0.1",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-dist": "^1.12.1",
+    "js-beautify": "^1.11.0"
+  },
+  "build": {
+    "appId": "com.lazyapp.app",
+    "icon": "../logo.ico",
+    "productName": "LazyDay",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "invxious",
+        "repo": "lazydayapp"
+      }
+    ],
+    "win": {
+      "publish": [
+        "github"
+      ],
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "electron-updater": "^4.2.5",
+    "electron-log": "^4.1.0",
+    "electron-is-dev": "^1.2.0",
+    "ipc": "0.0.1",
+    "js-beautify": "^1.11.0",
+    "update-electron-app": "^1.5.0",
+    "electron-settings": "^3.2.0",
+    "fs": "0.0.1-security"
+  }
+}

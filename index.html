@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script src="js/aos/dist/aos.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="js/jquery-ui.min.css">
+  <link rel="stylesheet" href="js/aos/dist/aos.css">
+  <style media="screen">
+
+  @font-face {
+    font-family: PlayfairDisplay;
+    src: url(fonts/PlayfairDisplay-Regular.ttf);
+  }
+
+  body,html{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: PlayfairDisplay, serif;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    background: #D3CCE3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  a{
+    color: white;
+  }
+
+  ::selection{
+    background: #232526;
+    color: white;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #D3CCE3;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    transition: 0.5;
+    background: #4d4c4c;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  ::-webkit-scrollbar:active{
+    cursor: pointer;
+  }
+
+
+  img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+  }
+
+
+
+
+  #content{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  #bar{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 10px;
+    background: none;
+    position: fixed;
+    z-index: 10000000;
+    top: 0;
+    -webkit-app-region: drag;
+    pointer: grab;
+  }
+
+  .icons{
+    position: relative;
+    z-index: 100001;
+    color: #333333;
+    text-align: center;
+    margin:0 auto;
+    padding: 0;
+    width: 15px;
+    height: 15px;;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+
+  #times{
+    margin: 10px;
+    margin-top: 0;
+    opacity: 0.5;
+    width: 15px;
+    height:15px;
+    transition:0.8s;
+    cursor:pointer;
+    -webkit-app-region: no-drag;
+    display: block;
+
+  }
+  #times:hover{
+    color:white;
+    opacity: 0.4;
+  }
+
+  .home{
+    width: 30px;
+    height:20px;
+    transition:0.8s;
+    cursor:pointer;
+    -webkit-app-region: no-drag;
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    left: 8px;
+    bottom: 8px;
+  }
+
+  .home:hover{
+    color:white;
+    opacity: 0.4;
+  }
+
+  #settings{
+    margin: 10px;
+    margin-top: 0;
+    opacity: 0.5;
+    width: 15px;
+    height:15px;
+    transition:0.8s;
+    cursor:pointer;
+    -webkit-app-region: no-drag;
+    display: block;
+
+  }
+  #settings:hover{
+    opacity: 0.2;
+  }
+
+  #full{
+    margin: 10px;
+    margin-top: 0;
+    opacity: 0.5;
+    width: 15px;
+    height:15px;
+    transition:0.8s;
+    cursor:pointer;
+    -webkit-app-region: no-drag;
+    display: block;
+
+  }
+  #full:hover{
+    opacity: 0.2;
+  }
+
+  #mini{
+    margin: 10px;
+    margin-top: 0;
+    opacity: 0.5;
+    width: 15px;
+    height:15px;
+    transition:0.8s;
+    cursor:pointer;
+    -webkit-app-region: no-drag;
+    display: block;
+
+  }
+  #mini:hover{
+    color:white;
+    opacity: 0.4;
+  }
+
+  #maxi{
+    margin: 10px;
+    margin-top: 0;
+    opacity: 0.5;
+    width: 15px;
+    height:15px;
+    transition:0.8s;
+    cursor:pointer;
+    -webkit-app-region: no-drag;
+    display: block;
+  }
+  #maxi:hover{
+    color:white;
+    opacity: 0.4;
+  }
+
+  #save{
+    width: 25px;
+    height:25px;
+    margin-top: 5px;;
+    margin-left: 10px;
+    transition:0.8s;
+    cursor:pointer;
+    -webkit-app-region: no-drag;
+    opacity: 0.6;
+  }
+
+
+  .menu-btn{
+    padding-top: 5px;
+    height:40px;
+    line-height: 30px;
+    margin-left: 50px;
+    background-color: silver;
+    width: 45px;
+    margin-top: 100px;
+    border-radius: 50%;
+    transition: 0.5s;
+  }
+  .menu-btn:hover{
+    opacity: 0.5;
+  }
+
+  /* ANIMATIONS-------------------------------------------------------------------> */
+  #rot {
+    position: absolute;
+    top: 200px;
+    right: -500px;
+    width: 1000px;
+    height: 1000px;
+    filter: blur(5px);
+    opacity: 0.6;
+    -webkit-animation:spin 60s linear infinite;
+    -moz-animation:spin 60s linear infinite;
+    animation:spin 60s linear infinite;
+  }
+
+  #rot2 {
+    position: absolute;
+    top: 1000px;
+    left: -300px;
+    width: 1000px;
+    height: 1000px;
+    filter: blur(7px);
+    opacity: 0.6;
+    -webkit-animation:spin 30s linear infinite;
+    -moz-animation:spin 30s linear infinite;
+    animation:spin 30s linear infinite;
+  }
+
+  #curvanimada{
+    margin: 0;
+    width: 150%;
+    position: absolute;
+    z-index: 9999;
+    bottom: -5px;
+    animation-delay: 1s;
+    left: -10px;
+    padding: 0;
+    opacity: 0.6;
+    animation: wave 10s linear infinite;
+  }
+
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform:rotate(360deg);
+    }
+  }
+
+  @keyframes wave {
+    0%{
+      -webkit-transform: rotate(3deg);
+      transform:rotate(3deg);
+      bottom: 0px;
+    }
+    25%{
+      -webkit-transform: rotate(0deg);
+      transform:rotate(0deg);
+      bottom: 3px;
+    }
+    50%{
+      -webkit-transform: rotate(-3deg);
+      transform:rotate(-3deg);
+      bottom: 0px;
+    }
+    75%{
+      -webkit-transform: rotate(0deg);
+      transform:rotate(0deg);
+      bottom: -3px;
+    }
+    100%{
+      -webkit-transform: rotate(3deg);
+      transform:rotate(3deg);
+      bottom: 0px;
+    }
+  }
+
+  /* --------------------------------------------------------------------------------> */
+  .corpo{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .titulo{
+    position: relative;
+    z-index: 100;
+    font-size: 70px;
+    padding-top: 5%;
+    padding-left: 5%;
+    color: #313944;
+    text-align: left;
+    margin: 0;
+  }
+
+  .titulo2{
+    position: relative;
+    z-index: 100000;
+    font-size: 35px;
+    padding-left: 5%;
+    color: #313944;
+    text-align: left;
+    margin: 0;
+  }
+
+  .clock{
+    width: 80px;
+    height: 30px;
+    z-index: 100000000;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    color: #333333;
+    transition: 0.5s;
+    text-align: center;
+
+  }
+
+  #version{
+    width: 80px;
+    font-size: 10px;
+    height: 15px;
+    z-index: 100000000000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    opacity: 0.8;
+    color: #333333;
+    text-align: center;
+    transition: 0.5s;
+  }
+
+
+
+
+  .tempo{
+    color: white;
+  }
+
+
+  #notification {
+    z-index: 1000000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    background-color: #383838;
+    -webkit-box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+  }
+
+  #notification2 {
+    z-index: 1000000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    background-color: #383838;
+    text-align: center;
+    font-size: 35px;
+    -webkit-box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+  }
+
+  #nome{
+    width: 300px;
+    height: 50px;
+    color: white;
+    line-height: 50px;
+    font-size: 30px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: PlayfairDisplay, serif;
+    background-color: #1e1e1f
+
+  }
+
+  input:focus, button:focus{
+    outline: none;
+  }
+
+  #notification3 {
+    z-index: 1000000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    background-color: #383838;
+    text-align: center;
+    font-size: 35px;
+    -webkit-box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+  }
+
+  .notifs {
+    z-index: 1000000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    background-color: #383838;
+    text-align: center;
+    font-size: 35px;
+    -webkit-box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 36px 0px rgba(0,0,0,0.75);
+  }
+
+  #novonome{
+    width: 300px;
+    height: 50px;
+    color: white;
+    line-height: 50px;
+    font-size: 30px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: PlayfairDisplay, serif;
+    background-color: #1e1e1f
+
+  }
+
+
+  #restart-button, .close-button{
+    border-radius: 5px;
+    background-color: #1e1e1f;
+    border: none;
+    color: white;
+    height: 50px;
+    width: 100px;
+    align-self: center;
+    font-size: 20px;
+    margin-top: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .round-btn{
+    border-radius: 50%;
+    background-color: #D3CCE3;
+    border: none;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    font-size: 20px;
+    bottom: 0px;
+    right: 0px;
+    margin: 15px;
+    transition: 1s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .round-btn:hover{
+    opacity: 0.6;
+  }
+
+  button{
+    font-family: PlayfairDisplay, serif;
+  }
+
+  #ok-button, #ok-button2, .okbtn{
+    border-radius: 5px;
+    background-color: #1e1e1f;
+    border: none;
+    color: white;
+    height: 50px;
+    width: 100px;
+    align-self: center;
+    font-size: 20px;
+    margin-top: 40px;
+  }
+
+  .icon-btn{
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #1e1e1f;
+    border: none;
+    color: white;
+    height: 100px;
+    width: 100px;
+    align-self: center;
+    font-size: 20px;
+    margin-top: 40px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .block{
+    border-radius: 10px;
+    color: white;
+    background-color: #383838;
+    margin-left: 50px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    width: 80%;
+    align-self: left;
+    height: 200px;
+  }
+
+  #philo-block{
+    position: relative;
+    top: 100px;
+    left: calc(50vw - (80% / 2));
+    border-radius: 10px;
+    color: #383838;
+    background-color: #D3CCE3;
+    width: 80%;
+    align-self: center;
+    height: 400px;
+  }
+
+  #philo-left{
+    float: left;
+    width: 50%;
+    height: 400px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  #philo-right{
+    float: right;
+    width: 50%;
+    height: 400px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-image: url("images/plato.jpg");
+    background-size:cover;
+    background-position: center;
+  }
+
+  .clear{clear: both;}
+
+  #rodape{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 800px;
+    text-align: center;
+    background-color: #313944;
+  }
+
+  #filo{
+    width: 150px;
+    position: absolute;
+    margin-top: -22%;
+    left: calc(50vw - (150px / 2));
+    z-index: 10002;
+    mix-blend-mode: exclusion;
+    filter: invert(100%);
+  }
+
+  #curva{
+    margin: 0;
+    width: 150%;
+    position: absolute;
+    z-index: 10000;
+    bottom: -10px;;
+    left: -10px;
+    padding: 0;
+  }
+
+  .block-title{
+    margin-bottom: 0px;
+    padding-top: 15px;
+    margin-left: 30px;
+    font-size: 45px;
+  }
+
+  .block-text{
+    position: relative;
+    margin-top: 35px;
+    margin-left: 120px;
+    font-size: 25px;
+  }
+
+  /*ALERT______________________________________________________________________*/
+
+  .modalContainer {
+    background-color:rgba(0, 0, 0, 0.3);
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:10000;
+  }
+
+  #alertBox {
+    margin: auto;
+    position: absolute;
+    left:0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 5%;
+    border-radius: 8px;
+    width:80%;
+    height:400px;
+    border:none;
+    background-color:#bdbdbd;
+  }
+
+
+  #alertBox h1 {
+    display: none;
+  }
+
+  #alertBox p {
+
+    margin: 0;
+    padding: 0;
+    padding-top: 15%;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+
+  /*ALERT______________________________________________________________________*/
+
+
+  </style>
+</head>
+<body>
+
+  <div id=content>
+    <div id="bar">
+      <div id="times" class="x" onclick="window.close();">
+        <img class="icons" src="images/times.svg" alt="">
+      </div>
+      <div id="maxi">
+        <img class="icons" src="images/max.svg" alt="">
+      </div>
+      <div id="mini">
+        <img class="icons" src="images/minus.svg" alt="">
+      </div>
+      <div id="full">
+        <img id="setas" class="icons" src="images/expand.svg" alt="">
+      </div>
+      <div id="settings">
+        <img id="set-img" class="icons" src="images/set.svg" alt="">
+      </div>
+    </div>
+    <div id="notification" class="hidden">
+      <p id="message"></p>
+      <button class="close-button" onClick="closeNotification()">
+        Close
+      </button>
+      <button id="restart-button" onClick="restartApp()" class="hidden">
+        Restart
+      </button>
+    </div>
+    <div id="notification2" class="hidden">
+      <p id="message">Welcome! Please Tell Us Your Name</p>
+      <input id="nome" type="text" name="" value="" maxlength="20" required>
+      <br />
+      <button id="ok-button" class="hidden">
+        Done!
+      </button>
+    </div>
+    <div id="notification3" class="hidden">
+      <p id="message">Wanna Change Your Name?</p>
+      <input id="novonome" type="text" name="" value="" maxlength="20" required>
+      <br />
+      <button id="ok-button2" class="hidden">
+        Done!
+      </button>
+      <button  id="close-set" class="hidden close-button">
+        Close
+      </button>
+      <br />
+      <p style="margin-bottom: 0;margin-top: 200px;font-size: 20px;">Developed by <a id="link" style="color: white;" href="https://www.ricardoinacio.pt">Ricardo Inácio</a></p>
+      <br />
+      <p style="margin: 0;font-size: 20px;">Copyright (c) 2020 Ricardo Inácio All Rights Reserved.</p>
+      <p style="margin: 0;font-size: 15px;">Some Icons by <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">Freepik</a> and <a href="https://www.flaticon.com/br/autores/good-ware" title="Good Ware">Good Ware</a> from <a  style="color: white;" href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></p>
+    </div>
+    <div class="clock"></div>
+    <div id="version"></div>
+    <!-- ----------------------------------------------------APP------------------------------------------------------------------- -->
+    <div class="corpo">
+      <img id="rot" src="images/rot.svg" alt="">
+      <img id="rot2" src="images/rot2.svg" alt="">
+      <h1 data-aos="fade-right" data-aos-duration="2000" id="titulo" class="titulo"></h1>
+      <h2 data-aos="fade-right" data-aos-duration="2500" id="olauser" class="titulo2"></h2>
+
+      <div data-aos="fade-right" data-aos-duration="2500" class="block">
+        <p class="block-title">
+          Daily Water Reminder
+        </p>
+        <img style="filter: invert(100%);width: 80px;margin-left:25px;padding-top: 10px;position: absolute;" src="images/agua.svg" alt="">
+        <p class="block-text">
+          Define your reminder to stay hydrated
+        </p>
+        <p style="position: absolute;right: 0;top: 0;background: #D3CCE3;margin-right: 15px; border-radius: 30px; padding: 5px; width: 200px; color: #313944;text-align: center;" class="hidden" id="water-goal">
+
+        </p>
+        <p style="position: absolute;right: 0;top: 50px ;background: #D3CCE3;margin-right: 15px; border-radius: 30px; padding: 5px; width: 200px; color: #313944;text-align: center;" class="hidden" id="water-hour">
+
+        </p>
+        <div id="plus-btn" class="round-btn">
+          <img  style="width: 30px;height:30px;display: block; margin: auto auto;padding-top: 10px;" src="images/plus.svg" alt="">
+        </div>
+      </div>
+      <div id="notif-water" class=" notifs hidden">
+        <p id="message">What is your hydratation goal?</p>
+        <button style="position: absolute;right: 0;bottom:0;margin:20px;"  id="close-water" class=" close-button">
+          Close
+        </button>
+        <br />
+        <button value=1 id="water-btn-1" class="icon-btn">
+          Every Hour
+        </button>
+        <button value=2 id="water-btn-2" class="icon-btn">
+          Every 2 Hours
+        </button>
+        <button value=3 id="water-btn-3" class="icon-btn">
+          Every 3 Hours
+        </button>
+
+        <p style="margin: 10%; color: #e83939 ;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;text-align: justify;font-size: 25px;">
+          WARNING: By setting a new daily goal, your previous goal <u>WILL</u> be erased, and the hour of start will be overwritten, restarting the timer.
+
+        </p>
+
+      </div>
+
+      <div style="margin-bottom: 300px;visibility: hidden" data-aos="fade-right" data-aos="fade-right" data-aos-duration="2500" class="block">
+        <!-- FILLER BLOCK -->
+      </div>
+
+      <img id="curva" src="images/rodape.svg" alt="">
+      <img id="curvanimada" src="images/rodape.svg" alt="">
+    </div>
+    <div id="rodape">
+      <img id="filo" src="images/filosofia.svg" alt="">
+      <p style="position: absolute;width: 100%;z-index: 100001; color: #D3CCE3;margin: 0; font-size: 60px;margin-top: -30px;" data-aos="fade-down" data-aos-duration="2000">Daily Philosophy</p>
+      <div id="philo-block">
+        <div id="philo-left">
+          <p data-aos="fade-in" style="margin-left: 3%;font-size: 35px;">
+            Plato <span style="font-size: 12px;">(428/427 BC - 348/347 BC)</span>
+          </p>
+          <p style="margin: 10%;font-size: 18px;text-align: justify;">
+            Apply yourself both now and in the next life. Without effort, you cannot be prosperous. Though the land be good, you cannot have an abundant crop without cultivation.
+          </p>
+        </div>
+        <div id="philo-right">
+
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <script src="js/menu.js"></script>
+    <script src="renderer.js"></script>
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"  crossorigin="anonymous"></script>
+    <script>if (window.module) module = window.module;</script>
+
+    <script>
+    AOS.init();
+    setTimeout(() => {AOS.refresh();}, 500);
+
+    $(function(){
+      setInterval(function() {
+        var d = new Date;
+        var h = d.getHours();
+        var mi = d.getMinutes();
+        if(h<10){
+          h = "0"+h;
+        }
+        if(mi<10){
+          mi = "0"+mi;
+        }
+
+        $('.clock').html(h+":"+mi);
+      }, 1000);
+
+
+      var h = new Date();
+      var horas = h.getHours()
+
+      if (horas >= 6 && horas < 12) {
+        $("#titulo").html("Good Morning");
+      }else if(horas >= 12 && horas < 19){
+        $("#titulo").html("Good Afternoon");
+      }else if(horas >= 19 && horas < 22){
+        $("#titulo").html("Good Evening");
+      }else{
+        $("#titulo").html("Good Evening");
+      }
+
+      $("body").on('click', '#link', (event) => {
+        event.preventDefault();
+        let link = event.target.href;
+        require("electron").shell.openExternal(link);
+      });
+
+      $(window).bind('scroll', function() {
+
+        if($(window).scrollTop() < $('#curva').offset().top + $('#curva').outerHeight() - window.innerHeight) {
+          $("#version").css("color","#333333");
+          $(".clock").css("color","#333333");
+        }
+
+        if($(window).scrollTop() >= ($('#curva').offset().top + $('#curva').outerHeight() - window.innerHeight)-300) {
+          $("#version").css("color","#D3CCE3");
+          $(".clock").css("color","#D3CCE3");
+        }
+      });
+    });
+
+
+    //UPDATER_________________________________________________________________>
+
+    const { ipcRenderer } = require('electron');
+    const notification = document.getElementById('notification');
+    const message = document.getElementById('message');
+    const restartButton = document.getElementById('restart-button');
+
+    ipcRenderer.send('app_version');
+    ipcRenderer.on('app_version', (event, arg) => {
+      ipcRenderer.removeAllListeners('app_version');
+      document.getElementById("version").innerHTML = 'version ' + arg.version;
+    });
+
+    ipcRenderer.on('update_available', () => {
+      ipcRenderer.removeAllListeners('update_available');
+      message.innerText = 'A new update is available. Downloading now...';
+      notification.classList.remove('hidden');
+    });
+
+    ipcRenderer.on('update_downloaded', () => {
+      ipcRenderer.removeAllListeners('update_downloaded');
+      message.innerText = 'Update Downloaded. It will be installed on restart. Restart now?';
+      restartButton.classList.remove('hidden');
+      notification.classList.remove('hidden');
+    });
+
+    function closeNotification() {
+      notification.classList.add('hidden');
+    }
+    function restartApp() {
+      ipcRenderer.send('restart_app');
+    }
+
+    //SETTINGS_________________________________________________________________>
+    const settings = require('electron-settings');
+
+    if(!settings.has('user.nome')){
+      document.getElementById("notification2").classList.remove("hidden");
+      document.getElementById("ok-button").classList.remove("hidden");
+      document.getElementById("ok-button").onclick = function(){
+        var nome = document.getElementById("nome").value;
+        settings.set('user.nome', nome);
+        document.getElementById("notification2").classList.add("hidden");
+        document.getElementById("ok-button").classList.add("hidden");
+        location.reload();
+      }
+    }else{
+      document.getElementById("olauser").innerHTML = "Welcome " + settings.get('user.nome') + ", how can I help you?";
+      document.getElementsByClassName("username").innerHTML = settings.get('user.nome');
+    }
+
+
+
+    document.getElementById("settings").onclick = function(){
+      document.getElementById("notification3").classList.remove("hidden");
+      document.getElementById("ok-button2").classList.remove("hidden");
+      document.getElementById("close-set").classList.remove("hidden");
+      document.getElementById("ok-button2").onclick = function(){
+        var nome = document.getElementById("novonome").value;
+        settings.set('user.nome', nome);
+        document.getElementById("notification3").classList.add("hidden");
+        document.getElementById("ok-button2").classList.add("hidden");
+        document.getElementById("close-set").classList.add("hidden");
+        location.reload();
+      }
+    }
+
+    document.getElementById("close-set").onclick = function(){
+      document.getElementById("notification3").classList.add("hidden");
+    }
+
+    document.getElementById("close-water").onclick = function(){
+      document.getElementById("notif-water").classList.add("hidden");
+
+    }
+
+    document.getElementById("plus-btn").onclick = function(){
+      document.getElementById("notif-water").classList.remove("hidden");
+
+      document.getElementById("water-btn-1").onclick = function(){
+        var watergoal = document.getElementById("water-btn-1").value;
+        settings.set('user.watergoal', watergoal);
+        document.getElementById("notif-water").classList.add("hidden");
+        location.reload();
+      }
+
+      document.getElementById("water-btn-2").onclick = function(){
+        var watergoal = document.getElementById("water-btn-2").value;
+        settings.set('user.watergoal', watergoal);
+        document.getElementById("notif-water").classList.add("hidden");
+        location.reload();
+      }
+
+
+      document.getElementById("water-btn-3").onclick = function(){
+        var watergoal = document.getElementById("water-btn-3").value;
+        settings.set('user.watergoal', watergoal);
+        document.getElementById("notif-water").classList.add("hidden");
+        location.reload();
+      }
+
+    }
+
+    // --------------------------------DAILY WATER------------------------------------------
+
+    if(settings.has('user.watergoal')){
+      var dailygoal;
+      var watergoalInfo = settings.get('user.watergoal');
+      if(watergoalInfo == 1){
+        dailygoal = "Every Hour";
+
+        setInterval(waterNotif, 3600000);
+
+      }else if(watergoalInfo == 2){
+        dailygoal = "Every 2 Hours";
+
+        setInterval(waterNotif, 7200000);
+
+      } if(watergoalInfo == 3){
+        dailygoal = "Every 3 Hour";
+
+        setInterval(waterNotif, 10800000);
+
+      }
+
+
+      document.getElementById("water-goal").classList.remove("hidden");
+      document.getElementById("water-goal").innerHTML = "Current goal: "+ dailygoal;
+    }
+
+    // --------------------------------NOTIFICATIONS------------------------------------------
+
+    function waterNotif(){
+      Notification.requestPermission().then(function(result){
+
+        var notif = new Notification("Time to Hydrate!" ,{
+          'body': "It's time to get a cup of Water!",
+          'icon': 'images/agua.svg'
+        });
+      });
+    }
+
+    </script>
+  </body>
+  </html>

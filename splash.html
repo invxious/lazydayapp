@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <style>
+  body,html{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: PlayfairDisplay, serif;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    background: #D3CCE3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-attachment: fixed;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+  }
+
+  .titulo{
+    position: relative;
+    z-index: 100;
+    font-size: 40px;
+    color: #313944;
+    text-align: center;
+    margin: 0;
+  }
+
+  #load{
+    width: 300px;
+    animation:spin 10s linear infinite;
+  }
+
+  @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+  @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+  @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+  </style>
+</head>
+<body>
+  <img id="load" src="images/load.svg" alt="">
+  <h1 class="titulo">Loading</h1>
+  <script>
+    var items = Array("load.svg","load2.svg","load3.svg","load4.svg","load5.svg","load6.svg","load7.svg","load8.svg","load9.svg");
+    var load = items[Math.floor(Math.random() * items.length)];
+    document.getElementById("load").setAttribute("src","images/"+load);
+  </script>
+</body>
+</html>
