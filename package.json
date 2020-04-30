@@ -52,7 +52,7 @@
     }
   },
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "electron-updater": "^4.2.5",
     "electron-log": "^4.1.0",
     "electron-is-dev": "^1.2.0",
